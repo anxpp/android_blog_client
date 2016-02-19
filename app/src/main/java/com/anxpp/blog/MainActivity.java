@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         //滑动方式设置
         viewActionsContentView.setSwipingType(ActionsContentView.SWIPING_ALL);
 
+        viewActionsContentView.setSpacingWidth(viewActionsContentView.getSpacingWidth() + (int) (100 * getResources().getDisplayMetrics().density));
+
         //菜单列表
         final ListView viewActionsList = (ListView) findViewById(R.id.actions);
         //菜单列表适配器

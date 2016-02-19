@@ -48,30 +48,24 @@
 
     <!-- Actions -->
     <array name="actions_icons">
-        <item>@null</item>
         <item>@drawable/ic_action_home</item>
         <item>@drawable/ic_action_about</item>
         <item>@drawable/ic_action_settings</item>
-        <item>@drawable/ic_action_effects</item>
         <item>@null</item>
         <item>@drawable/ic_link_dropbox</item>
     </array>
 
     <string-array name="actions_names">
-        <item>@string/action_settings</item>
         <item>@string/action_home</item>
         <item>@string/action_about</item>
         <item>@string/action_sandbox</item>
-        <item>@string/action_effects</item>
         <item>@string/action_bookmarks</item>
         <item>anxpp</item>
     </string-array>
     <string-array name="actions_links">
-        <item>category://settings</item>
         <item>settings://home</item>
         <item>settings://about</item>
         <item>settings://sandbox</item>
-        <item>settings://effects</item>
         <item>category://bookmarks</item>
         <item>http://anxpp.com</item>
     </string-array>

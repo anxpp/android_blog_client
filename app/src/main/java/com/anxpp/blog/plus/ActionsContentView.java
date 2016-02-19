@@ -50,11 +50,11 @@ public class ActionsContentView extends ViewGroup {
   /**
    * Spacing will be calculated as offset from right bound of view.
    */
-  public static final int SPACING_RIGHT_OFFSET = 0;
+  public static final int SPACING_RIGHT_OFFSET = 0;//滑动后菜单栏宽度模式-宽
   /**
    * Spacing will be calculated as right bound of actions bar container.
    */
-  public static final int SPACING_ACTIONS_WIDTH = 1;
+  public static final int SPACING_ACTIONS_WIDTH = 1;//滑动后菜单栏宽度模式-合适宽度
 
   /**
    * Fade is disabled.
@@ -101,7 +101,7 @@ public class ActionsContentView extends ViewGroup {
   /**
    * Spacing type.
    */
-  private int mSpacingType = SPACING_RIGHT_OFFSET;
+  private int mSpacingType = SPACING_ACTIONS_WIDTH;
   /**
    * Value of spacing to use.
    */
