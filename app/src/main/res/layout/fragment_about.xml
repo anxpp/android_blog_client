@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/bottom_bar_text">
     <Button
-        android:text="test"
+        android:text="关于"
         android:onClick="test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

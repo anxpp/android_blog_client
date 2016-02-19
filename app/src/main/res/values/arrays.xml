@@ -50,9 +50,9 @@
     <array name="actions_icons">
         <item>@drawable/ic_action_home</item>
         <item>@drawable/ic_action_about</item>
-        <item>@drawable/ic_action_settings</item>
+        <item>@drawable/ic_action_setting</item>
         <item>@null</item>
-        <item>@drawable/ic_link_dropbox</item>
+        <item>@drawable/ic_action_bookmark</item>
     </array>
 
     <string-array name="actions_names">

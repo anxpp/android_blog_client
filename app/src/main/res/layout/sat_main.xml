@@ -5,7 +5,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
-        android:src="@drawable/menu"
+        android:src="@drawable/ic_menu_yellow"
         android:layout_gravity="bottom|left"
         android:contentDescription="@string/empty"/>
 </merge>

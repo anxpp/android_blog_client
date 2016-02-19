@@ -30,7 +30,7 @@
         android:layout_gravity="bottom|left"
         android:visibility="gone"
         android:layout_margin="15dp"
-        app:satelliteDistance="170dp"
+        app:satelliteDistance="80dp"
         app:closeOnClick="true"/>
 
 </FrameLayout>

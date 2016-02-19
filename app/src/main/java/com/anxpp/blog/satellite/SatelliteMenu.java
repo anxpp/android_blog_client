@@ -32,13 +32,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class SatelliteMenu extends FrameLayout {
 
-	//²Ëµ¥¼üºÍ²Ëµ¥Ñ¡ÏîµÄ¾àÀë
+	//èœå•é”®å’Œèœå•é€‰é¡¹çš„è·ç¦»
 	private static final int DEFAULT_SATELLITE_DISTANCE = 300;
-	//²Ëµ¥Ñ¡Ïîµ¯³öµÄÉÈĞÎ½Ç¶È
+	//èœå•é€‰é¡¹å¼¹å‡ºçš„æ‰‡å½¢è§’åº¦
 	private static final float DEFAULT_TOTAL_SPACING_DEGREES = 90f;
-	//µã»÷²Ëµ¥¼üÊÇ·ñ¿ÉÒÔÊÕÆğÑ¡Ïî
+	//ç‚¹å‡»èœå•é”®æ˜¯å¦å¯ä»¥æ”¶èµ·é€‰é¡¹
 	private static final boolean DEFAULT_CLOSE_ON_CLICK = true;
-	//¶¯»­¹ı¶ÈÊ±¼ä
+	//åŠ¨ç”»è¿‡åº¦æ—¶é—´
 	private static final int DEFAULT_EXPAND_DURATION = 500;
 
 	private Animation mainRotateRight;

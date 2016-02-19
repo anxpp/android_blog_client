@@ -47,10 +47,9 @@ public class MainActivity extends AppCompatActivity {
 //        menu.setCloseItemsOnClick(false);
 //        menu.setTotalSpacingDegree(60);
         List<SatelliteMenuItem> items = new ArrayList<>();
-        items.add(new SatelliteMenuItem(4, R.drawable.sat_item));
-        items.add(new SatelliteMenuItem(3, R.drawable.sat_item));
-        items.add(new SatelliteMenuItem(2, R.drawable.sat_item));
-        items.add(new SatelliteMenuItem(1, R.drawable.sat_item));
+        items.add(new SatelliteMenuItem(3, R.drawable.ic_action_setting));
+        items.add(new SatelliteMenuItem(2, R.drawable.ic_action_about));
+        items.add(new SatelliteMenuItem(1, R.drawable.ic_action_home));
         menu.addItems(items);
         menu.setOnItemClickedListener(new SatelliteMenu.SateliteClickedListener() {
             public void eventOccured(int id) {
@@ -91,12 +90,15 @@ public class MainActivity extends AppCompatActivity {
         updateContent(currentUri);
     }
 
+    private int oldWidth = 0;
     public void test(View view){
-        if(viewActionsContentView.getActionsSpacingWidth()==0){
-            setWidth(64);
+        int width = viewActionsContentView.getActionsSpacingWidth();
+        if(width==0){
+            setWidth(oldWidth);
             menu.setVisibility(View.GONE);
             return;
         }
+        oldWidth = width;
         setWidth(0);
         menu.setVisibility(View.VISIBLE);
     }
@@ -119,14 +121,14 @@ public class MainActivity extends AppCompatActivity {
             if (currentFragment != null)
                 tr.hide(currentFragment);
         }
-        //如果为about
+        //如果为主页
         if (FragmentHome.HOME_URI.equals(uri)) {
             tag = FragmentHome.TAG;
             final Fragment foundFragment = fm.findFragmentByTag(tag);
             if (foundFragment != null) {
                 fragment = foundFragment;
             } else {
-                fragment = new FragmentAbout();
+                fragment = new FragmentHome();
             }
         }else if (FragmentAbout.ABOUT_URI.equals(uri)) {
             tag = FragmentAbout.TAG;
