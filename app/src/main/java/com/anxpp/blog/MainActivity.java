@@ -207,12 +207,14 @@ public class MainActivity extends AppCompatActivity {
                 case FragmentSandbox.PREF_SHOW_SHADOW:
                     viewActionsContentView.setShadowVisible(value == 1);
                     return;
+                //阴影方式
                 case FragmentSandbox.PREF_FADE_TYPE:
                     viewActionsContentView.setFadeType(value);
                     return;
                 case FragmentSandbox.PREF_FADE_MAX_VALUE:
                     viewActionsContentView.setFadeValue(value);
                     return;
+                //滑动方式
                 case FragmentSandbox.PREF_SWIPING_TYPE:
                     viewActionsContentView.setSwipingType(value);
                     return;
