@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -23,4 +23,14 @@
         app:shadow_drawable="@drawable/shadow"
         app:shadow_width="@dimen/default_pref_shadow_width" />
 
-</android.support.design.widget.CoordinatorLayout>
+    <com.anxpp.blog.satellite.SatelliteMenu
+        android:id="@+id/main_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:visibility="gone"
+        android:layout_margin="15dp"
+        app:satelliteDistance="170dp"
+        app:closeOnClick="true"/>
+
+</FrameLayout>

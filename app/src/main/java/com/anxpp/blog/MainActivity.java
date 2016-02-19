@@ -14,6 +14,11 @@ import android.widget.Toast;
 
 import com.anxpp.blog.plus.ActionsAdapter;
 import com.anxpp.blog.plus.ActionsContentView;
+import com.anxpp.blog.satellite.SatelliteMenu;
+import com.anxpp.blog.satellite.SatelliteMenuItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Uri currentUri = FragmentAbout.ABOUT_URI;
     /**     * 内容主布局     */
     private ActionsContentView viewActionsContentView;
+    private SatelliteMenu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +38,25 @@ public class MainActivity extends AppCompatActivity {
         mSettingsChangedListener = new SettingsChangedListener();
 
         setContentView(R.layout.activity_main);
+
+        menu = (SatelliteMenu) findViewById(R.id.main_menu);
+//		  Set from XML, possible to programmatically set
+//        float distance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 170, getResources().getDisplayMetrics());
+//        menu.setSatelliteDistance((int) distance);
+//        menu.setExpandDuration(500);
+//        menu.setCloseItemsOnClick(false);
+//        menu.setTotalSpacingDegree(60);
+        List<SatelliteMenuItem> items = new ArrayList<>();
+        items.add(new SatelliteMenuItem(4, R.drawable.sat_item));
+        items.add(new SatelliteMenuItem(3, R.drawable.sat_item));
+        items.add(new SatelliteMenuItem(2, R.drawable.sat_item));
+        items.add(new SatelliteMenuItem(1, R.drawable.sat_item));
+        menu.addItems(items);
+        menu.setOnItemClickedListener(new SatelliteMenu.SateliteClickedListener() {
+            public void eventOccured(int id) {
+                Toast.makeText(MainActivity.this,id+"",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         viewActionsContentView = (ActionsContentView) findViewById(R.id.actionsContentView);
         //滑动方式设置
@@ -67,10 +92,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void test(View view){
-        int w = viewActionsContentView.getActionsSpacingWidth();
-        Toast.makeText(this, "click:" + w, Toast.LENGTH_SHORT).show();
+        if(viewActionsContentView.getActionsSpacingWidth()==0){
+            setWidth(64);
+            menu.setVisibility(View.GONE);
+            return;
+        }
         setWidth(0);
-        startActivity(new Intent(this,SatelliteMenuActivity.class));
+        menu.setVisibility(View.VISIBLE);
     }
     private void setWidth(int num){
         viewActionsContentView.setActionsSpacingWidth(num);
