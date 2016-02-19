@@ -2,7 +2,8 @@ package com.anxpp.blog;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Toast;
+
 import com.anxpp.blog.satellite.SatelliteMenu.SateliteClickedListener;
 
 import com.anxpp.blog.satellite.SatelliteMenu;
@@ -28,8 +29,6 @@ public class SatelliteMenuActivity extends Activity {
 //        menu.setTotalSpacingDegree(60);
         
         List<SatelliteMenuItem> items = new ArrayList<>();
-        items.add(new SatelliteMenuItem(6, R.drawable.sat_item));
-        items.add(new SatelliteMenuItem(5, R.drawable.sat_item));
         items.add(new SatelliteMenuItem(4, R.drawable.sat_item));
         items.add(new SatelliteMenuItem(3, R.drawable.sat_item));
         items.add(new SatelliteMenuItem(2, R.drawable.sat_item));
@@ -38,7 +37,7 @@ public class SatelliteMenuActivity extends Activity {
         
         menu.setOnItemClickedListener(new SateliteClickedListener() {
 			public void eventOccured(int id) {
-				Log.i("sat", "Clicked on " + id);
+                Toast.makeText(SatelliteMenuActivity.this,id+"",Toast.LENGTH_SHORT).show();
 			}
 		});
     }
