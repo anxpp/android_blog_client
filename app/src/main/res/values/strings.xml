@@ -4,6 +4,9 @@
 
     <string name="anxpp_home">http://anxpp.com</string>
 
+
+    <string name="empty"> </string>
+
     <!-- Setting strings -->
     <string name="pref_spacing">侧滑设置</string>
     <string name="pref_spacing_type">滑动方式</string>

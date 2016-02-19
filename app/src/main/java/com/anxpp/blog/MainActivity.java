@@ -15,8 +15,6 @@ import android.widget.Toast;
 import com.anxpp.blog.plus.ActionsAdapter;
 import com.anxpp.blog.plus.ActionsContentView;
 
-import java.util.concurrent.Executors;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String STATE_URI = "state:uri";
@@ -72,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         int w = viewActionsContentView.getActionsSpacingWidth();
         Toast.makeText(this, "click:" + w, Toast.LENGTH_SHORT).show();
         setWidth(0);
+        startActivity(new Intent(this,SatelliteMenuActivity.class));
     }
     private void setWidth(int num){
         viewActionsContentView.setActionsSpacingWidth(num);
