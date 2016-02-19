@@ -25,6 +25,7 @@
     <string name="pref_other_fling_duration">滑动速度延迟</string>
     <!-- Action titles -->
     <string name="action_settings">设置</string>
+    <string name="action_home">主页</string>
     <string name="action_about">关于</string>
     <string name="action_sandbox">沙盒</string>
     <string name="action_effects">效果</string>

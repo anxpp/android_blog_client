@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private String currentContentFragmentTag = null;
     private SettingsChangedListener mSettingsChangedListener;
     //进入时默认的fragment
-    private Uri currentUri = FragmentAbout.ABOUT_URI;
+    private Uri currentUri = FragmentHome.HOME_URI;
     /**     * 内容主布局     */
     private ActionsContentView viewActionsContentView;
     private SatelliteMenu menu;
@@ -82,12 +82,10 @@ public class MainActivity extends AppCompatActivity {
                 viewActionsContentView.showContent();
             }
         });
-
         if (savedInstanceState != null) {
             currentUri = Uri.parse(savedInstanceState.getString(STATE_URI));
             currentContentFragmentTag = savedInstanceState.getString(STATE_FRAGMENT_TAG);
         }
-
         updateContent(currentUri);
     }
 
@@ -120,7 +118,15 @@ public class MainActivity extends AppCompatActivity {
                 tr.hide(currentFragment);
         }
         //如果为about
-        if (FragmentAbout.ABOUT_URI.equals(uri)) {
+        if (FragmentHome.HOME_URI.equals(uri)) {
+            tag = FragmentHome.TAG;
+            final Fragment foundFragment = fm.findFragmentByTag(tag);
+            if (foundFragment != null) {
+                fragment = foundFragment;
+            } else {
+                fragment = new FragmentAbout();
+            }
+        }else if (FragmentAbout.ABOUT_URI.equals(uri)) {
             tag = FragmentAbout.TAG;
             final Fragment foundFragment = fm.findFragmentByTag(tag);
             if (foundFragment != null) {
