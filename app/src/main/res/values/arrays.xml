@@ -49,7 +49,7 @@
     <!-- Actions -->
     <array name="actions_icons">
         <item>@null</item>
-        <item>@drawable/ic_action_about</item>
+        <item>@drawable/ic_action_home</item>
         <item>@drawable/ic_action_about</item>
         <item>@drawable/ic_action_settings</item>
         <item>@drawable/ic_action_effects</item>
