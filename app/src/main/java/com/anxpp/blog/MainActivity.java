@@ -1,6 +1,5 @@
 package com.anxpp.blog;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 //获取菜单项链接
                 final Uri uri = actionsAdapter.getItem(position);
                 if (currentUri.equals(uri)) {
-                    startActivity(new Intent(getBaseContext(), MainActivity.class));
+//                    startActivity(new Intent(getBaseContext(), MainActivity.class));
                     return;
                 }
                 //切换到其他fragment
@@ -137,6 +136,14 @@ public class MainActivity extends AppCompatActivity {
                 fragment = foundFragment;
             } else {
                 fragment = new FragmentAbout();
+            }
+        }else if (FragmentBlog.BLOG_URI.equals(uri)) {
+            tag = FragmentBlog.TAG;
+            final Fragment foundFragment = fm.findFragmentByTag(tag);
+            if (foundFragment != null) {
+                fragment = foundFragment;
+            } else {
+                fragment = new FragmentBlog();
             }
         }else if (FragmentSandbox.SETTINGS_URI.equals(uri)) {
             tag = FragmentSandbox.TAG;

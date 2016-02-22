@@ -49,6 +49,7 @@
     <!-- Actions -->
     <array name="actions_icons">
         <item>@drawable/ic_action_home</item>
+        <item>@drawable/ic_action_home</item>
         <item>@drawable/ic_action_about</item>
         <item>@drawable/ic_action_setting</item>
         <item>@null</item>
@@ -57,6 +58,7 @@
 
     <string-array name="actions_names">
         <item>@string/action_home</item>
+        <item>@string/action_home</item>
         <item>@string/action_about</item>
         <item>@string/action_sandbox</item>
         <item>@string/action_bookmarks</item>
@@ -64,6 +66,7 @@
     </string-array>
     <string-array name="actions_links">
         <item>settings://home</item>
+        <item>settings://blog</item>
         <item>settings://about</item>
         <item>settings://sandbox</item>
         <item>category://bookmarks</item>
