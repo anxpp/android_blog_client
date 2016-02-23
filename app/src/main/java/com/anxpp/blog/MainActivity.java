@@ -127,14 +127,12 @@ public class MainActivity extends AppCompatActivity {
 
         final FragmentManager fm = getSupportFragmentManager();
         final FragmentTransaction tr = fm.beginTransaction();
+        tr.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
         if (!currentUri.equals(uri)) {
             //从其他页切换到主页
             if (uri.equals(FragmentHome.HOME_URI))
                 swapMenu(true);
-                //从主页切换到其他页
-            else if(currentUri.equals(FragmentHome.HOME_URI))
-                swapMenu(false);
             final Fragment currentFragment = fm.findFragmentByTag(currentContentFragmentTag);
             if (currentFragment != null)
                 tr.hide(currentFragment);
@@ -198,6 +196,10 @@ public class MainActivity extends AppCompatActivity {
             tr.replace(R.id.content, fragment, tag);
         }
         tr.commit();
+
+        //从主页切换到其他页
+        if(!currentUri.equals(uri)&&currentUri.equals(FragmentHome.HOME_URI))
+            swapMenu(false);
 
         currentUri = uri;
         currentContentFragmentTag = tag;
