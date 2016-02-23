@@ -5,7 +5,7 @@
     <string name="anxpp_home">http://anxpp.com</string>
 
 
-    <string name="empty"> </string>
+    <string name="empty">空的</string>
 
     <!-- Setting strings -->
     <string name="pref_spacing">侧滑设置</string>

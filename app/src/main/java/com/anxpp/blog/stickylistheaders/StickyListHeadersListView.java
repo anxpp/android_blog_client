@@ -24,10 +24,10 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SectionIndexer;
-import com.anxpp.blog.stickylistheaders.WrapperViewList.LifeCycleListener;
 
 import com.anxpp.blog.R;
 
+import com.anxpp.blog.stickylistheaders.WrapperViewList.LifeCycleListener;
 
 /**
  * Even though this is a FrameLayout subclass we still consider it a ListView.

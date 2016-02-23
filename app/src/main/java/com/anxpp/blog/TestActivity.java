@@ -22,36 +22,28 @@ import com.anxpp.blog.stickylistheaders.StickyListHeadersListView;
 
 
 /**
- * @author Emil Sjölander
+ * @author Emil Sjlander
  */
 public class TestActivity extends ActionBarActivity implements
-        AdapterView.OnItemClickListener, StickyListHeadersListView.OnHeaderClickListener,
+        AdapterView.OnItemClickListener,
+        StickyListHeadersListView.OnHeaderClickListener,
         StickyListHeadersListView.OnStickyHeaderOffsetChangedListener,
         StickyListHeadersListView.OnStickyHeaderChangedListener {
 
     private TestBaseAdapter mAdapter;
-    private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private boolean fadeHeader = true;
 
     private StickyListHeadersListView stickyList;
+    //下拉刷新
     private SwipeRefreshLayout refreshLayout;
-
-    private Button restoreButton;
-    private Button updateButton;
-    private Button clearButton;
-
-    private CheckBox stickyCheckBox;
-    private CheckBox fadeCheckBox;
-    private CheckBox drawBehindCheckBox;
-    private CheckBox fastScrollCheckBox;
-    private Button openExpandableListButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.test);
 
+        //设置下拉刷新
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_layout);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -65,13 +57,17 @@ public class TestActivity extends ActionBarActivity implements
             }
         });
 
+        //适配器
         mAdapter = new TestBaseAdapter(this);
 
+        //具体列表控件
         stickyList = (StickyListHeadersListView) findViewById(R.id.list);
+        //事件监听
         stickyList.setOnItemClickListener(this);
         stickyList.setOnHeaderClickListener(this);
         stickyList.setOnStickyHeaderChangedListener(this);
         stickyList.setOnStickyHeaderOffsetChangedListener(this);
+        //添加页首页末布局
         stickyList.addHeaderView(getLayoutInflater().inflate(R.layout.list_header, null));
         stickyList.addFooterView(getLayoutInflater().inflate(R.layout.list_footer, null));
         stickyList.setEmptyView(findViewById(R.id.empty));
@@ -79,7 +75,8 @@ public class TestActivity extends ActionBarActivity implements
         stickyList.setAreHeadersSticky(true);
         stickyList.setAdapter(mAdapter);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //侧边栏
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
@@ -87,31 +84,31 @@ public class TestActivity extends ActionBarActivity implements
                 R.string.drawer_open,  /* "open drawer" description */
                 R.string.drawer_close  /* "close drawer" description */
         );
-
         // Set the drawer toggle as the DrawerListener
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
-        restoreButton = (Button) findViewById(R.id.restore_button);
+        Button restoreButton = (Button) findViewById(R.id.restore_button);
         restoreButton.setOnClickListener(buttonListener);
-        openExpandableListButton = (Button) findViewById(R.id.open_expandable_list_button);
+        Button openExpandableListButton = (Button) findViewById(R.id.open_expandable_list_button);
         openExpandableListButton.setOnClickListener(buttonListener);
-        updateButton = (Button) findViewById(R.id.update_button);
+        Button updateButton = (Button) findViewById(R.id.update_button);
         updateButton.setOnClickListener(buttonListener);
-        clearButton = (Button) findViewById(R.id.clear_button);
+        Button clearButton = (Button) findViewById(R.id.clear_button);
         clearButton.setOnClickListener(buttonListener);
 
-        stickyCheckBox = (CheckBox) findViewById(R.id.sticky_checkBox);
+        CheckBox stickyCheckBox = (CheckBox) findViewById(R.id.sticky_checkBox);
         stickyCheckBox.setOnCheckedChangeListener(checkBoxListener);
-        fadeCheckBox = (CheckBox) findViewById(R.id.fade_checkBox);
+        CheckBox fadeCheckBox = (CheckBox) findViewById(R.id.fade_checkBox);
         fadeCheckBox.setOnCheckedChangeListener(checkBoxListener);
-        drawBehindCheckBox = (CheckBox) findViewById(R.id.draw_behind_checkBox);
+        CheckBox drawBehindCheckBox = (CheckBox) findViewById(R.id.draw_behind_checkBox);
         drawBehindCheckBox.setOnCheckedChangeListener(checkBoxListener);
-        fastScrollCheckBox = (CheckBox) findViewById(R.id.fast_scroll_checkBox);
+        CheckBox fastScrollCheckBox = (CheckBox) findViewById(R.id.fast_scroll_checkBox);
         fastScrollCheckBox.setOnCheckedChangeListener(checkBoxListener);
 
+        //从顶部的偏移量
         stickyList.setStickyHeaderTopOffset(-20);
     }
 
