@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcelable;
+import android.preference.PreferenceActivity;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -35,7 +36,7 @@ import com.anxpp.blog.stickylistheaders.WrapperViewList.LifeCycleListener;
  *   1. It acts like as ListView.
  *   2. It used to be a ListView subclass and refactoring the name would cause compatibility errors.
  *
- * @author Emil Sjölander
+ * @author Emil Sj枚lander
  */
 public class StickyListHeadersListView extends FrameLayout {
 
@@ -389,6 +390,8 @@ public class StickyListHeadersListView extends FrameLayout {
             removeView(mHeader);
         }
         mHeader = newHeader;
+        //设置透明度
+        mHeader.setAlpha(0.8f);
         addView(mHeader);
         if (mOnHeaderClickListener != null) {
             mHeader.setOnClickListener(new OnClickListener() {
@@ -522,6 +525,11 @@ public class StickyListHeadersListView extends FrameLayout {
             }
         }
 
+    }
+
+    public void setHeaderAlpha(float alpha){
+        if(alpha>=0&&alpha<=1)
+            mHeader.setAlpha(alpha);
     }
 
     private class WrapperViewListLifeCycleListener implements LifeCycleListener {

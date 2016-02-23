@@ -47,13 +47,14 @@ public class MainActivity extends AppCompatActivity {
 //        menu.setCloseItemsOnClick(false);
 //        menu.setTotalSpacingDegree(60);
         List<SatelliteMenuItem> items = new ArrayList<>();
-        items.add(new SatelliteMenuItem(3, R.drawable.ic_action_setting));
-        items.add(new SatelliteMenuItem(2, R.drawable.ic_action_about));
-        items.add(new SatelliteMenuItem(1, R.drawable.ic_action_home));
+        items.add(new SatelliteMenuItem(2, R.drawable.ic_action_setting));
+        items.add(new SatelliteMenuItem(1, R.drawable.ic_action_about));
+        items.add(new SatelliteMenuItem(0, R.drawable.ic_action_home));
+        final Uri[] uris= {FragmentHome.HOME_URI,FragmentAbout.ABOUT_URI,FragmentSandbox.SETTINGS_URI};
         menu.addItems(items);
         menu.setOnItemClickedListener(new SatelliteMenu.SateliteClickedListener() {
             public void eventOccured(int id) {
-                Toast.makeText(MainActivity.this,id+"",Toast.LENGTH_SHORT).show();
+                updateContent(uris[id]);
             }
         });
 
@@ -90,11 +91,16 @@ public class MainActivity extends AppCompatActivity {
         updateContent(currentUri);
     }
 
-    private int oldWidth = 0;
     public void test(View view){
-        startActivity(new Intent(MainActivity.this,TestActivity.class));
+        startActivity(new Intent(MainActivity.this, TestActivity.class));
+//        swapMenu();
+    }
+    private int oldWidth = 0;
+    //false表示当前为侧边栏菜单  true表示当前为扇形菜单
+    private void swapMenu(boolean menuMode){
+        Toast.makeText(this,"切换到"+(menuMode?"主页":"其他页"),Toast.LENGTH_SHORT).show();
         int width = viewActionsContentView.getActionsSpacingWidth();
-        if(width==0){
+        if(menuMode){
             setWidth(oldWidth);
             menu.setVisibility(View.GONE);
             return;
@@ -118,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
         final FragmentTransaction tr = fm.beginTransaction();
 
         if (!currentUri.equals(uri)) {
+            //从其他页切换到主页
+            if (uri.equals(FragmentHome.HOME_URI))
+                swapMenu(true);
+                //从主页切换到其他页
+            else if(currentUri.equals(FragmentHome.HOME_URI))
+                swapMenu(false);
             final Fragment currentFragment = fm.findFragmentByTag(currentContentFragmentTag);
             if (currentFragment != null)
                 tr.hide(currentFragment);
