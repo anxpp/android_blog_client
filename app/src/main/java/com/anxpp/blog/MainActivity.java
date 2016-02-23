@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     private int oldWidth = 0;
     //false表示当前为侧边栏菜单  true表示当前为扇形菜单
     private void swapMenu(boolean menuMode){
-        Toast.makeText(this,"切换到"+(menuMode?"主页":"其他页"),Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,"切换到"+(menuMode?"主页":"其他页"),Toast.LENGTH_SHORT).show();
         int width = viewActionsContentView.getActionsSpacingWidth();
         if(menuMode){
             setWidth(oldWidth);

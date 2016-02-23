@@ -12,6 +12,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 public class FragmentBlog extends Fragment {
 	public static final String TAG = FragmentBlog.class.getSimpleName();
@@ -34,10 +35,13 @@ public class FragmentBlog extends Fragment {
 	}
 
 	private void initView(){
+		final ProgressBar viewContentProgress = (ProgressBar) getView().findViewById(R.id.progress);
 		webView = (WebView) getView().findViewById(R.id.webView);
 		//		webView.setVisibility(View.GONE);
 		webView.setWebChromeClient(new WebChromeClient(){
 			public void onProgressChanged(WebView view, int progress){
+				viewContentProgress.setProgress(progress);
+				viewContentProgress.setVisibility(progress == 100 ? View.GONE : View.VISIBLE);
 				Activity activity = getActivity();
 				/**
 				 * 此处若不加这个判断，会因为Fragment在网页加载完成前退出而导致程序错误
