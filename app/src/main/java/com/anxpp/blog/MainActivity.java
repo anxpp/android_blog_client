@@ -1,5 +1,6 @@
 package com.anxpp.blog;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int oldWidth = 0;
     public void test(View view){
+        startActivity(new Intent(MainActivity.this,TestActivity.class));
         int width = viewActionsContentView.getActionsSpacingWidth();
         if(width==0){
             setWidth(oldWidth);

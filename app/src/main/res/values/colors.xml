@@ -9,4 +9,9 @@
     <color name="bottom_bar_bg">#fff1f1f1</color>
     <color name="actions_bg">#ff3c3c3c</color>
     <color name="actions_divider">#ff888888</color>
+
+
+    <color name="header_normal">#ffe74c3c</color>
+    <color name="header_pressed">#ffc0392b</color>
+    <color name="menu_section_header">#FFDDDDDD</color>
 </resources>
