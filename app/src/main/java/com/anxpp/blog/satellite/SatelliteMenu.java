@@ -35,7 +35,7 @@ public class SatelliteMenu extends FrameLayout {
 	//菜单键和菜单选项的距离
 	private static final int DEFAULT_SATELLITE_DISTANCE = 350;
 	//菜单选项弹出的扇形角度
-	private static final float DEFAULT_TOTAL_SPACING_DEGREES = 120f;
+	private static final float DEFAULT_TOTAL_SPACING_DEGREES = 90f;
 	//点击菜单键是否可以收起选项
 	private static final boolean DEFAULT_CLOSE_ON_CLICK = true;
 	//动画过度时间

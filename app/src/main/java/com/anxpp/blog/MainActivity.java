@@ -47,14 +47,19 @@ public class MainActivity extends AppCompatActivity {
 //        menu.setCloseItemsOnClick(false);
 //        menu.setTotalSpacingDegree(60);
         List<SatelliteMenuItem> items = new ArrayList<>();
-        items.add(new SatelliteMenuItem(2, R.drawable.ic_action_setting));
-        items.add(new SatelliteMenuItem(1, R.drawable.ic_action_about));
-        items.add(new SatelliteMenuItem(0, R.drawable.ic_action_home));
-        final Uri[] uris= {FragmentHome.HOME_URI,FragmentAbout.ABOUT_URI,FragmentSandbox.SETTINGS_URI};
+        items.add(new SatelliteMenuItem(4, R.drawable.ic_action_setting));
+        items.add(new SatelliteMenuItem(3, R.drawable.ic_action_about));
+        items.add(new SatelliteMenuItem(2, R.drawable.ic_action_blog));
+        items.add(new SatelliteMenuItem(1, R.drawable.ic_action_home));
+        final Uri[] uris= {
+                FragmentHome.HOME_URI,
+                FragmentBlog.BLOG_URI,
+                FragmentAbout.ABOUT_URI,
+                FragmentSandbox.SETTINGS_URI};
         menu.addItems(items);
         menu.setOnItemClickedListener(new SatelliteMenu.SateliteClickedListener() {
             public void eventOccured(int id) {
-                updateContent(uris[id]);
+                updateContent(uris[id-1]);
             }
         });
 
