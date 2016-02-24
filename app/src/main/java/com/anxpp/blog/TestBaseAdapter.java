@@ -177,6 +177,7 @@ public class TestBaseAdapter extends BaseAdapter implements
         return mSectionLetters;
     }
 
+    //«Â¿Ì
     public void clear() {
         mCountries = new String[0];
         mSectionIndices = new int[0];
