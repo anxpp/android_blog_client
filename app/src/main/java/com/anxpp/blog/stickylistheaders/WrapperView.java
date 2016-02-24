@@ -11,8 +11,9 @@ import android.view.ViewParent;
 /**
  * 
  * the view that wrapps a divider header and a normal list item. The listview sees this as 1 item
+ * 这个视图封装了一个头和一个正常的列表视图。
  * 
- * @author Emil Sjölander
+ * @author anxpp.com
  */
 public class WrapperView extends ViewGroup {
 
@@ -45,7 +46,8 @@ public class WrapperView extends ViewGroup {
 			throw new NullPointerException("List view item must not be null.");
 		}
 
-		//only remove the current item if it is not the same as the new item. this can happen if wrapping a recycled view
+		//only remove the current item if it is not the same as the new item.
+		//this can happen if wrapping a recycled view
 		if (this.mItem != item) {
 			removeView(this.mItem);
 			this.mItem = item;
