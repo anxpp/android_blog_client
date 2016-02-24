@@ -3,7 +3,9 @@ package com.anxpp.blog;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,8 @@ public class FragmentBlog extends Fragment {
 	private static final String BLOG_AUTHORITY = "blog";
 	public static final Uri BLOG_URI = new Uri.Builder().scheme(BLOG_SCHEME).authority(BLOG_AUTHORITY).build();
 
+	//下拉刷新
+	private SwipeRefreshLayout refreshLayout;
 	private WebView webView;
 
 	@Override
@@ -35,6 +39,22 @@ public class FragmentBlog extends Fragment {
 	}
 
 	private void initView(){
+
+		//设置下拉刷新
+		refreshLayout = (SwipeRefreshLayout)getView().findViewById(R.id.refresh_layout);
+		refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+			@Override
+			public void onRefresh() {
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+//						refreshLayout.setRefreshing(false);
+						webView.reload();
+					}
+				}, 0);
+			}
+		});
+
 		final ProgressBar viewContentProgress = (ProgressBar) getView().findViewById(R.id.progress);
 		webView = (WebView) getView().findViewById(R.id.webView);
 		//		webView.setVisibility(View.GONE);
@@ -58,6 +78,7 @@ public class FragmentBlog extends Fragment {
 				if(progress == 100){
 					activity.setTitle(R.string.app_name);
 					webView.setVisibility(View.VISIBLE);
+					refreshLayout.setRefreshing(false);
 				}
 			}
 		});

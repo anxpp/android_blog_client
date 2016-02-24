@@ -30,29 +30,29 @@ class AdapterWrapper extends BaseAdapter implements StickyListHeadersAdapter {
 	}
 
 	StickyListHeadersAdapter mDelegate;
-	private final List<View> mHeaderCache = new LinkedList<View>();
+	private final List<View> mHeaderCache = new LinkedList<>();
 	private final Context mContext;
 	private Drawable mDivider;
 	private int mDividerHeight;
 	private OnHeaderClickListener mOnHeaderClickListener;
-	private DataSetObserver mDataSetObserver = new DataSetObserver() {
-
-		@Override
-		public void onInvalidated() {
-			mHeaderCache.clear();
-			AdapterWrapper.super.notifyDataSetInvalidated();
-		}
-		
-		@Override
-		public void onChanged() {
-			AdapterWrapper.super.notifyDataSetChanged();
-		}
-	};
 
 	AdapterWrapper(Context context,
 			StickyListHeadersAdapter delegate) {
 		this.mContext = context;
 		this.mDelegate = delegate;
+		DataSetObserver mDataSetObserver = new DataSetObserver() {
+
+			@Override
+			public void onInvalidated() {
+				mHeaderCache.clear();
+				AdapterWrapper.super.notifyDataSetInvalidated();
+			}
+
+			@Override
+			public void onChanged() {
+				AdapterWrapper.super.notifyDataSetChanged();
+			}
+		};
 		delegate.registerDataSetObserver(mDataSetObserver);
 	}
 
