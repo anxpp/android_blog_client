@@ -4,6 +4,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 
+/**
+ * 首节点适配器接口
+ *
+ * @author anxpp.com
+ */
 public interface StickyListHeadersAdapter extends ListAdapter {
 	/**
 	 * Get a View that displays the header data at the specified position in the

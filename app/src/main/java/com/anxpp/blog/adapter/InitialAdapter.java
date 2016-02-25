@@ -1,4 +1,4 @@
-package com.anxpp.blog;
+package com.anxpp.blog.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,15 +7,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
+
+import com.anxpp.blog.R;
 import com.anxpp.blog.stickylistheaders.StickyListHeadersAdapter;
 
 import java.util.ArrayList;
 
 /**
- * 适配器
+ * 首字母分类适配器
  */
-public class TestBaseAdapter extends BaseAdapter implements
-        StickyListHeadersAdapter, SectionIndexer {
+public class InitialAdapter extends BaseAdapter implements StickyListHeadersAdapter, SectionIndexer {
 
     //上下文
     private final Context mContext;
@@ -42,7 +43,7 @@ public class TestBaseAdapter extends BaseAdapter implements
      */
     private LayoutInflater mInflater;
 
-    public TestBaseAdapter(Context context) {
+    public InitialAdapter(Context context) {
         mContext = context;
         mInflater = LayoutInflater.from(context);
         mCountries = context.getResources().getStringArray(R.array.countries);
@@ -123,7 +124,7 @@ public class TestBaseAdapter extends BaseAdapter implements
 
         if (convertView == null) {
             holder = new HeaderViewHolder();
-            convertView = mInflater.inflate(R.layout.header, parent, false);
+            convertView = mInflater.inflate(R.layout.item_header, parent, false);
             holder.text = (TextView) convertView.findViewById(R.id.text1);
             convertView.setTag(holder);
         } else {

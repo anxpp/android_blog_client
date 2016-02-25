@@ -18,6 +18,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.anxpp.blog.adapter.InitialAdapter;
 import com.anxpp.blog.stickylistheaders.StickyListHeadersListView;
 
 
@@ -30,7 +31,7 @@ public class TestActivity extends ActionBarActivity implements
         StickyListHeadersListView.OnStickyHeaderOffsetChangedListener,
         StickyListHeadersListView.OnStickyHeaderChangedListener {
 
-    private TestBaseAdapter mAdapter;
+    private InitialAdapter mAdapter;
     private ActionBarDrawerToggle mDrawerToggle;
     private boolean fadeHeader = true;
 
@@ -58,7 +59,7 @@ public class TestActivity extends ActionBarActivity implements
         });
 
         //适配器
-        mAdapter = new TestBaseAdapter(this);
+        mAdapter = new InitialAdapter(this);
 
         //具体列表控件
         stickyList = (StickyListHeadersListView) findViewById(R.id.list);

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.anxpp.blog.adapter.InitialAdapter;
 import com.anxpp.blog.stickylistheaders.StickyListHeadersListView;
 
 public class FragmentHome extends Fragment implements AdapterView.OnItemClickListener{
@@ -28,7 +29,7 @@ public class FragmentHome extends Fragment implements AdapterView.OnItemClickLis
 		super.onStart();
 
 		//适配器
-		TestBaseAdapter mAdapter = new TestBaseAdapter(getActivity());
+		InitialAdapter mAdapter = new InitialAdapter(getActivity());
 
 		//具体列表控件
 		StickyListHeadersListView stickyList = (StickyListHeadersListView) getView().findViewById(R.id.list);

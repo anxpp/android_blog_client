@@ -6,7 +6,7 @@ import android.widget.Checkable;
 /**
  * A WrapperView that implements the checkable interface
  * 
- * @author Emil Sjölander
+ * @author anxpp.com
  */
 class CheckableWrapperView extends WrapperView implements Checkable {
 
@@ -24,6 +24,7 @@ class CheckableWrapperView extends WrapperView implements Checkable {
 		((Checkable) mItem).setChecked(checked);
 	}
 
+	//切换
 	@Override
 	public void toggle() {
 		setChecked(!isChecked());

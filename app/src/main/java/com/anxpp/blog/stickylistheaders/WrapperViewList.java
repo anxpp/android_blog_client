@@ -40,11 +40,7 @@ class WrapperViewList extends ListView {
 				mSelectorPositionField = AbsListView.class.getDeclaredField("mSelectorPosition");
 				mSelectorPositionField.setAccessible(true);
 			}
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+		} catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
 	}
@@ -82,9 +78,7 @@ class WrapperViewList extends ListView {
 		} else {
 			try {
 				return mSelectorPositionField.getInt(this);
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
+			} catch (IllegalArgumentException | IllegalAccessException e) {
 				e.printStackTrace();
 			}
 		}
@@ -125,7 +119,7 @@ class WrapperViewList extends ListView {
 
 	private void addInternalFooterView(View v) {
 		if (mFooterViews == null) {
-			mFooterViews = new ArrayList<View>();
+			mFooterViews = new ArrayList<>();
 		}
 		mFooterViews.add(v);
 	}
@@ -140,10 +134,7 @@ class WrapperViewList extends ListView {
 	}
 
 	boolean containsFooterView(View v) {
-		if (mFooterViews == null) {
-			return false;
-		}
-		return mFooterViews.contains(v);
+		return mFooterViews != null && mFooterViews.contains(v);
 	}
 
 	void setTopClippingLength(int topClipping) {

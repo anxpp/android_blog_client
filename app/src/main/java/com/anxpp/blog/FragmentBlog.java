@@ -33,14 +33,9 @@ public class FragmentBlog extends Fragment {
 	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		initView();
-	}
-
-	@Override
 	public void onStart() {
 		super.onStart();
+		initView();
 	}
 
 	private void initView(){

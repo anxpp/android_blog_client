@@ -9,7 +9,6 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcelable;
-import android.preference.PreferenceActivity;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -41,57 +40,53 @@ import com.anxpp.blog.stickylistheaders.WrapperViewList.LifeCycleListener;
 public class StickyListHeadersListView extends FrameLayout {
 
     public interface OnHeaderClickListener {
-        void onHeaderClick(StickyListHeadersListView l, View header,
-                           int itemPosition, long headerId, boolean currentlySticky);
+        void onHeaderClick(StickyListHeadersListView l, View header, int itemPosition, long headerId, boolean currentlySticky);
     }
 
     /**
-     * Notifies the listener when the sticky headers top offset has changed.
+     * 偏移量改变时的监听器
      */
     public interface OnStickyHeaderOffsetChangedListener {
         /**
-         * @param l      The view parent
-         * @param header The currently sticky header being offset.
-         *               This header is not guaranteed to have it's measurements set.
-         *               It is however guaranteed that this view has been measured,
-         *               therefor you should user getMeasured* methods instead of
-         *               get* methods for determining the view's size.
-         * @param offset The amount the sticky header is offset by towards to top of the screen.
+         * @param l      父布局
+         * @param header 当前的Header会被偏移
+         *               Header没有保证它的测量设置，但视图是保证测量了的
+         *               因此，你应该使用getMeasured*方法代替get*确定视图的尺寸。
+         * @param offset 偏移量，从顶部偏移的
          */
         void onStickyHeaderOffsetChanged(StickyListHeadersListView l, View header, int offset);
     }
 
     /**
-     * Notifies the listener when the sticky header has been updated
+     * Header更新时的监听器
      */
     public interface OnStickyHeaderChangedListener {
         /**
-         * @param l             The view parent
-         * @param header        The new sticky header view.
+         * @param l             父布局
+         * @param header        新的header.
          * @param itemPosition  The position of the item within the adapter's data set of
          *                      the item whose header is now sticky.
-         * @param headerId      The id of the new sticky header.
+         * @param headerId      id.
          */
-        void onStickyHeaderChanged(StickyListHeadersListView l, View header,
-                                   int itemPosition, long headerId);
+        void onStickyHeaderChanged(StickyListHeadersListView l, View header, int itemPosition, long headerId);
 
     }
 
-    /* --- Children --- */
+    /* 子视图 */
     private WrapperViewList mList;
     private View mHeader;
 
-    /* --- Header state --- */
+    /* --- Header 的一些参数 --- */
     private Long mHeaderId;
     // used to not have to call getHeaderId() all the time
     private Integer mHeaderPosition;
     private Integer mHeaderOffset;
 
-    /* --- Delegates --- */
+    /* --- 成员 --- */
     private OnScrollListener mOnScrollListenerDelegate;
     private AdapterWrapper mAdapter;
 
-    /* --- Settings --- */
+    /* --- 设置 --- */
     private boolean mAreHeadersSticky = true;
     private boolean mClippingToPadding = true;
     private boolean mIsDrawingListUnderStickyHeader = true;
@@ -101,12 +96,12 @@ public class StickyListHeadersListView extends FrameLayout {
     private int mPaddingRight = 0;
     private int mPaddingBottom = 0;
 
-    /* --- Touch handling --- */
+    /* --- 触摸处理 --- */
     private float mDownY;
     private boolean mHeaderOwnsTouch;
     private float mTouchSlop;
 
-    /* --- Other --- */
+    /* --- 其他 --- */
     private OnHeaderClickListener mOnHeaderClickListener;
     private OnStickyHeaderOffsetChangedListener mOnStickyHeaderOffsetChangedListener;
     private OnStickyHeaderChangedListener mOnStickyHeaderChangedListener;
@@ -122,7 +117,6 @@ public class StickyListHeadersListView extends FrameLayout {
         this(context, attrs, R.attr.stickyListHeadersListViewStyle);
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public StickyListHeadersListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
@@ -525,11 +519,6 @@ public class StickyListHeadersListView extends FrameLayout {
             }
         }
 
-    }
-
-    public void setHeaderAlpha(float alpha){
-        if(alpha>=0&&alpha<=1)
-            mHeader.setAlpha(alpha);
     }
 
     private class WrapperViewListLifeCycleListener implements LifeCycleListener {

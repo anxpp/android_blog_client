@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.anxpp.blog.adapter.InitialAdapter;
 import com.anxpp.blog.stickylistheaders.ExpandableStickyListHeadersListView;
 import com.anxpp.blog.stickylistheaders.StickyListHeadersListView;
 
@@ -19,7 +20,7 @@ import java.util.WeakHashMap;
 public class ExpandableListTestActivity extends Activity {
 
     private ExpandableStickyListHeadersListView mListView;
-    TestBaseAdapter mTestBaseAdapter;
+    InitialAdapter mTestBaseAdapter;
     WeakHashMap<View,Integer> mOriginalViewHeightPool = new WeakHashMap<View, Integer>();
 
 
@@ -30,7 +31,7 @@ public class ExpandableListTestActivity extends Activity {
         mListView = (ExpandableStickyListHeadersListView) findViewById(R.id.list);
         //custom expand/collapse animation
         mListView.setAnimExecutor(new AnimationExecutor());
-        mTestBaseAdapter = new TestBaseAdapter(this);
+        mTestBaseAdapter = new InitialAdapter(this);
         mListView.setAdapter(mTestBaseAdapter);
         mListView.setOnHeaderClickListener(new StickyListHeadersListView.OnHeaderClickListener() {
             @Override
