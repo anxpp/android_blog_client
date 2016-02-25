@@ -11,9 +11,9 @@ import android.widget.ListAdapter;
  */
 public interface StickyListHeadersAdapter extends ListAdapter {
 	/**
-	 * Get a View that displays the header data at the specified position in the
-	 * set. You can either create a View manually or inflate it from an XML layout
-	 * file.
+	 * Get a View that displays the header data at the specified position in the set.
+	 * You can either create a View manually or inflate it from an XML layout file.
+	 * 得到一个视图显示标题数据集合中的指定位置。你可以创建一个视图或手动将它从一个XML布局文件
 	 *
 	 * @param position
 	 * The position of the item within the adapter's data set of the item whose

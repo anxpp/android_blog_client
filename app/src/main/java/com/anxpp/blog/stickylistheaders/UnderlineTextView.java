@@ -9,10 +9,15 @@ import android.util.TypedValue;
 import android.widget.TextView;
 
 /**
- * @author Eric Frohnhoefer
+ * 带下划线的TextView
+ * @author http://www.anxpp.com/
  */
 public class UnderlineTextView  extends TextView {
+    //Paint即画笔，在绘图过程中起到了极其重要的作用，画笔主要保存了颜色，
+    //样式等绘制信息，指定了如何绘制文本和图形，画笔对象有很多设置方法，
+    //大体上可以分为两类，一类与图形绘制相关，一类与文本绘制相关
     private final Paint mPaint = new Paint();
+    //下划线高度
     private int mUnderlineHeight = 0;
 
     public UnderlineTextView(Context context) {
@@ -25,13 +30,11 @@ public class UnderlineTextView  extends TextView {
 
     public UnderlineTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
-        init(context, attrs);
+        init();
     }
 
-    private void init(Context context, AttributeSet attrs) {
-        Resources r = getResources();
-        mUnderlineHeight = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, r.getDisplayMetrics());
+    private void init() {
+        mUnderlineHeight = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
     }
 
     @Override
@@ -39,11 +42,11 @@ public class UnderlineTextView  extends TextView {
         super.setPadding(left, top, right, bottom + mUnderlineHeight);
     }
 
+    //绘制下划线
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        // Draw the underline the same color as the text
+        //下划线与文字颜色相同
         mPaint.setColor(getTextColors().getDefaultColor());
         canvas.drawRect(0, getHeight() - mUnderlineHeight, getWidth(), getHeight(), mPaint);
     }

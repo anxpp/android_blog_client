@@ -14,6 +14,7 @@ import com.anxpp.blog.adapter.InitialAdapter;
 import com.anxpp.blog.stickylistheaders.StickyListHeadersListView;
 
 public class Home extends Fragment implements AdapterView.OnItemClickListener{
+
 	public static final String TAG = Home.class.getSimpleName();
 
 	private static final String HOME_SCHEME = "settings";

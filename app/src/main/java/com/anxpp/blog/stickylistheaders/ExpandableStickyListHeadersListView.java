@@ -46,10 +46,10 @@ public class ExpandableStickyListHeadersListView extends StickyListHeadersListVi
         super(context, attrs, defStyle);
     }
 
-    @Override
-    public ExpandableStickyListHeadersAdapter getAdapter() {
-        return mExpandableStickyListHeadersAdapter;
-    }
+//    @Override
+//    public ExpandableStickyListHeadersAdapter getAdapter() {
+//        return mExpandableStickyListHeadersAdapter;
+//    }
 
     @Override
     public void setAdapter(StickyListHeadersAdapter adapter) {

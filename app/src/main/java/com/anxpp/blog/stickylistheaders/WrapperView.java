@@ -35,9 +35,9 @@ public class WrapperView extends ViewGroup {
 		return mItem;
 	}
 	
-	public View getHeader() {
-		return mHeader;
-	}
+//	public View getHeader() {
+//		return mHeader;
+//	}
 
 	void update(View item, View header, Drawable divider, int dividerHeight) {
 		

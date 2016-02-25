@@ -11,16 +11,16 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/satellite/SatelliteAnimationCreator.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/satellite/SatelliteMenu.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/satellite/SatelliteMenuItem.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/AdapterWrapper.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/AdapterWrapper.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/CheckableWrapperView.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/DistinctMultiHashMap.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/DualHashMap.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/DualHashMap.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/ExpandableStickyListHeadersAdapter.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/ExpandableStickyListHeadersListView.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/SectionIndexerAdapterWrapper.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/StickyListHeadersAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/StickyListHeadersListView.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/UnderlineTextView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/UnderlineTextView.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/WrapperView.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/anxpp/blog/stickylistheaders/WrapperViewList.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/anim/sat_item_anim_click.xml" charset="GBK" />

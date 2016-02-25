@@ -3,12 +3,12 @@ package com.anxpp.blog.stickylistheaders;
 import java.util.HashMap;
 
 /**
- * simple two way hashmap
- * @author lsjwzh
+ * 双向hashmap
+ * @author anxpp.com
  */
 class DualHashMap<TKey, TValue> {
-    HashMap<TKey, TValue> mKeyToValue = new HashMap<TKey, TValue>();
-    HashMap<TValue, TKey> mValueToKey = new HashMap<TValue, TKey>();
+    HashMap<TKey, TValue> mKeyToValue = new HashMap<>();
+    HashMap<TValue, TKey> mValueToKey = new HashMap<>();
 
     public void put(TKey t1, TValue t2){
         remove(t1);
