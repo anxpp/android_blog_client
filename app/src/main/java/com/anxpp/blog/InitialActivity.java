@@ -183,13 +183,13 @@ public class InitialActivity extends ActionBarActivity implements
     }
 
     @Override
-    public void onHeaderClick(StickyListHeadersListView l, View header, int itemPosition, long headerId, boolean currentlySticky) {
+    public void onHeaderClick(StickyListHeadersListView stickyListHeadersListView, View header, int itemPosition, long headerId, boolean currentlySticky) {
         Toast.makeText(this, "Header " + headerId + " currentlySticky ? " + currentlySticky, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void onStickyHeaderOffsetChanged(StickyListHeadersListView l, View header, int offset) {
+    public void onStickyHeaderOffsetChanged(StickyListHeadersListView stickyListHeadersListView, View header, int offset) {
         if (fadeHeader && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             header.setAlpha(1 - (offset / (float) header.getMeasuredHeight()));
         }
@@ -197,7 +197,7 @@ public class InitialActivity extends ActionBarActivity implements
 
     @Override
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void onStickyHeaderChanged(StickyListHeadersListView l, View header, int itemPosition, long headerId) {
+    public void onStickyHeaderChanged(StickyListHeadersListView stickyListHeadersListView, View header, int itemPosition, long headerId) {
         header.setAlpha(1);
     }
 

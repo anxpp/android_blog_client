@@ -29,45 +29,45 @@ import com.anxpp.blog.R;
 import com.anxpp.blog.stickylistheaders.WrapperViewList.LifeCycleListener;
 
 /**
- * Even though this is a FrameLayout subclass we still consider it a ListView.
- * This is because of 2 reasons:
- *   1. It acts like as ListView.
- *   2. It used to be a ListView subclass and refactoring the name would cause compatibility errors.
+ * 尽管这是一个FrameLayout类,我们仍认为这是一个ListView。
+ * 原因如下：
+ *   1. 它的行为像ListView。
+ *   2. 它曾经是一个ListView子类和重构的名字会引起兼容性错误。
  *
- * @author Emil Sj枚lander
+ * @author anxpp.com
  */
 public class StickyListHeadersListView extends FrameLayout {
 
     public interface OnHeaderClickListener {
-        void onHeaderClick(StickyListHeadersListView l, View header, int itemPosition, long headerId, boolean currentlySticky);
+        void onHeaderClick(StickyListHeadersListView stickyListHeadersListView,
+                           View header, int itemPosition, long headerId, boolean currentlySticky);
     }
-
     /**
      * 偏移量改变时的监听器
      */
     public interface OnStickyHeaderOffsetChangedListener {
         /**
-         * @param l      父布局
+         * @param stickyListHeadersListView  父布局
          * @param header 当前的Header会被偏移
          *               Header没有保证它的测量设置，但视图是保证测量了的
          *               因此，你应该使用getMeasured*方法代替get*确定视图的尺寸。
          * @param offset 偏移量，从顶部偏移的
          */
-        void onStickyHeaderOffsetChanged(StickyListHeadersListView l, View header, int offset);
+        void onStickyHeaderOffsetChanged(StickyListHeadersListView stickyListHeadersListView,
+                                         View header, int offset);
     }
-
     /**
      * Header更新时的监听器
      */
     public interface OnStickyHeaderChangedListener {
         /**
-         * @param l             父布局
+         * @param stickyListHeadersListView  父布局
          * @param header        新的header.
-         * @param itemPosition  The position of the item within the adapter's data set of
-         *                      the item whose header is now sticky.
+         * @param itemPosition  在Adapter数据集中的位置
          * @param headerId      id.
          */
-        void onStickyHeaderChanged(StickyListHeadersListView l, View header, int itemPosition, long headerId);
+        void onStickyHeaderChanged(StickyListHeadersListView stickyListHeadersListView,
+                                   View header, int itemPosition, long headerId);
 
     }
 
@@ -80,14 +80,13 @@ public class StickyListHeadersListView extends FrameLayout {
     /* --- Header 的一些参数 --- */
     //id
     private Long mHeaderId;
-    // used to not have to call getHeaderId() all the time
     //位置
     private Integer mHeaderPosition;
     //偏移量
     private Integer mHeaderOffset;
 
     /* --- 成员 --- */
-    private OnScrollListener mOnScrollListenerDelegate;
+    private OnScrollListener onScrollListener;
     private AdapterWrapper mAdapter;
 
     /* --- 设置 --- */
@@ -512,16 +511,16 @@ public class StickyListHeadersListView extends FrameLayout {
         @Override
         public void onScroll(AbsListView view, int firstVisibleItem,
                              int visibleItemCount, int totalItemCount) {
-            if (mOnScrollListenerDelegate != null) {
-                mOnScrollListenerDelegate.onScroll(view, firstVisibleItem,
+            if (onScrollListener != null) {
+                onScrollListener.onScroll(view, firstVisibleItem,
                         visibleItemCount, totalItemCount);
             }
             updateOrClearHeader(wrapperViewList.getFixedFirstVisibleItem());
         }
         @Override
         public void onScrollStateChanged(AbsListView view, int scrollState) {
-            if (mOnScrollListenerDelegate != null) {
-                mOnScrollListenerDelegate.onScrollStateChanged(view, scrollState);
+            if (onScrollListener != null) {
+                onScrollListener.onScrollStateChanged(view, scrollState);
             }
         }
     }
@@ -730,7 +729,7 @@ public class StickyListHeadersListView extends FrameLayout {
 //        return mDividerHeight;
 //    }
     public void setOnScrollListener(OnScrollListener onScrollListener) {
-        mOnScrollListenerDelegate = onScrollListener;
+        this.onScrollListener = onScrollListener;
     }
 
     @Override

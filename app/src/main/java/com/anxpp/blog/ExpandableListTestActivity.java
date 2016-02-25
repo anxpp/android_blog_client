@@ -35,7 +35,7 @@ public class ExpandableListTestActivity extends Activity {
         mListView.setAdapter(mTestBaseAdapter);
         mListView.setOnHeaderClickListener(new StickyListHeadersListView.OnHeaderClickListener() {
             @Override
-            public void onHeaderClick(StickyListHeadersListView l, View header, int itemPosition, long headerId, boolean currentlySticky) {
+            public void onHeaderClick(StickyListHeadersListView stickyListHeadersListView, View header, int itemPosition, long headerId, boolean currentlySticky) {
                 if(mListView.isHeaderCollapsed(headerId)){
                     mListView.expand(headerId);
                 }else {
