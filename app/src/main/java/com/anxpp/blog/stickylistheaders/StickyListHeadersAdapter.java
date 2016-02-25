@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 
 /**
- * Ê×½ÚµãÊÊÅäÆ÷½Ó¿Ú
+ * é¦–èŠ‚ç‚¹é€‚é…å™¨æ¥å£
  *
  * @author anxpp.com
  */

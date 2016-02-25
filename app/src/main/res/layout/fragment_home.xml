@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#d9d6d6">
     <com.anxpp.blog.stickylistheaders.StickyListHeadersListView
         android:id="@+id/list"
@@ -11,6 +12,7 @@
         android:drawSelectorOnTop="true"
         android:padding="0dp"
         android:scrollbarStyle="outsideOverlay"
+        app:hasStickyHeaders="true"
         android:fastScrollEnabled="true"
         android:overScrollMode="never"/>
 </RelativeLayout>

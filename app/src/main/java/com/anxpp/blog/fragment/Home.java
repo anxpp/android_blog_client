@@ -20,9 +20,12 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener{
 	private static final String HOME_AUTHORITY = "home";
 	public static final Uri HOME_URI = new Uri.Builder().scheme(HOME_SCHEME).authority(HOME_AUTHORITY).build();
 
+	private View rootView;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_home, container, false);
+		rootView = inflater.inflate(R.layout.fragment_home, container, false);
+		return rootView;
 	}
 
 	@Override
@@ -33,18 +36,18 @@ public class Home extends Fragment implements AdapterView.OnItemClickListener{
 		InitialAdapter mAdapter = new InitialAdapter(getActivity());
 
 		//具体列表控件
-		StickyListHeadersListView stickyList = (StickyListHeadersListView) getView().findViewById(R.id.list);
+		StickyListHeadersListView stickyList = (StickyListHeadersListView) rootView.findViewById(R.id.list);
 		//事件监听
 		stickyList.setOnItemClickListener(this);
 		//添加页首页末布局
 		stickyList.addHeaderView(getActivity().getLayoutInflater().inflate(R.layout.list_header, null));
 		stickyList.addFooterView(getActivity().getLayoutInflater().inflate(R.layout.list_footer, null));
-		stickyList.setEmptyView(getView().findViewById(R.id.empty));
+		stickyList.setEmptyView(rootView.findViewById(R.id.empty));
 		stickyList.setDrawingListUnderStickyHeader(true);
-		stickyList.setAreHeadersSticky(true);
+//		stickyList.setAreHeadersSticky(true);	//设置头部固定
 		stickyList.setAdapter(mAdapter);
 		//从顶部的偏移量
-		stickyList.setStickyHeaderTopOffset(-20);
+		stickyList.setStickyHeaderTopOffset(0);
 	}
 
 	@Override
