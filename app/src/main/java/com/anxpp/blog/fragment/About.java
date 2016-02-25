@@ -1,4 +1,4 @@
-package com.anxpp.blog;
+package com.anxpp.blog.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentAbout extends Fragment {
-	public static final String TAG = FragmentAbout.class.getSimpleName();
+import com.anxpp.blog.R;
+
+public class About extends Fragment {
+	public static final String TAG = About.class.getSimpleName();
 
 	private static final String ABOUT_SCHEME = "settings";
 	private static final String ABOUT_AUTHORITY = "about";

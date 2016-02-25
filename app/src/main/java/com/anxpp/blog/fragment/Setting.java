@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package com.anxpp.blog;
+package com.anxpp.blog.fragment;
 
+import com.anxpp.blog.R;
 import com.anxpp.blog.plus.ActionsContentView;
 import com.anxpp.blog.plus.ValueChooserDialogFragment;
 
@@ -29,9 +30,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-public class FragmentSandbox extends Fragment implements View.OnClickListener {
+public class Setting extends Fragment implements View.OnClickListener {
 
-	public static final String TAG = FragmentSandbox.class.getSimpleName();
+	public static final String TAG = Setting.class.getSimpleName();
 	private static final boolean DEBUG = false;
 
 	public interface OnSettingsChangedListener {

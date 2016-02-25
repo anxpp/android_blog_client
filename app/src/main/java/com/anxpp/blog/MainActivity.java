@@ -10,8 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.anxpp.blog.fragment.About;
+import com.anxpp.blog.fragment.Blog;
+import com.anxpp.blog.fragment.Home;
+import com.anxpp.blog.fragment.Setting;
+import com.anxpp.blog.fragment.Web;
 import com.anxpp.blog.plus.ActionsAdapter;
 import com.anxpp.blog.plus.ActionsContentView;
 import com.anxpp.blog.satellite.SatelliteMenu;
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private String currentContentFragmentTag = null;
     private SettingsChangedListener mSettingsChangedListener;
     //进入时默认的fragment
-    private Uri currentUri = FragmentHome.HOME_URI;
+    private Uri currentUri = Home.HOME_URI;
     /**     * 内容主布局     */
     private ActionsContentView viewActionsContentView;
     private SatelliteMenu menu;
@@ -52,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
         items.add(new SatelliteMenuItem(2, R.drawable.ic_action_blog));
         items.add(new SatelliteMenuItem(1, R.drawable.ic_action_home));
         final Uri[] uris= {
-                FragmentHome.HOME_URI,
-                FragmentBlog.BLOG_URI,
-                FragmentAbout.ABOUT_URI,
-                FragmentSandbox.SETTINGS_URI};
+                Home.HOME_URI,
+                Blog.BLOG_URI,
+                About.ABOUT_URI,
+                Setting.SETTINGS_URI};
         menu.addItems(items);
         menu.setOnItemClickedListener(new SatelliteMenu.SateliteClickedListener() {
             public void eventOccured(int id) {
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void test(View view){
-        startActivity(new Intent(MainActivity.this, TestActivity.class));
+        startActivity(new Intent(MainActivity.this, InitialActivity.class));
 //        swapMenu();
     }
     private int oldWidth = 0;
@@ -131,58 +135,58 @@ public class MainActivity extends AppCompatActivity {
 
         if (!currentUri.equals(uri)) {
             //从其他页切换到主页
-            if (uri.equals(FragmentHome.HOME_URI))
+            if (uri.equals(Home.HOME_URI))
                 swapMenu(true);
             final Fragment currentFragment = fm.findFragmentByTag(currentContentFragmentTag);
             if (currentFragment != null)
                 tr.hide(currentFragment);
         }
         //如果为主页
-        if (FragmentHome.HOME_URI.equals(uri)) {
-            tag = FragmentHome.TAG;
+        if (Home.HOME_URI.equals(uri)) {
+            tag = Home.TAG;
             final Fragment foundFragment = fm.findFragmentByTag(tag);
             if (foundFragment != null) {
                 fragment = foundFragment;
             } else {
-                fragment = new FragmentHome();
+                fragment = new Home();
             }
-        }else if (FragmentAbout.ABOUT_URI.equals(uri)) {
-            tag = FragmentAbout.TAG;
+        }else if (About.ABOUT_URI.equals(uri)) {
+            tag = About.TAG;
             final Fragment foundFragment = fm.findFragmentByTag(tag);
             if (foundFragment != null) {
                 fragment = foundFragment;
             } else {
-                fragment = new FragmentAbout();
+                fragment = new About();
             }
-        }else if (FragmentBlog.BLOG_URI.equals(uri)) {
-            tag = FragmentBlog.TAG;
+        }else if (Blog.BLOG_URI.equals(uri)) {
+            tag = Blog.TAG;
             final Fragment foundFragment = fm.findFragmentByTag(tag);
             if (foundFragment != null) {
                 fragment = foundFragment;
             } else {
-                fragment = new FragmentBlog();
+                fragment = new Blog();
             }
-        }else if (FragmentSandbox.SETTINGS_URI.equals(uri)) {
-            tag = FragmentSandbox.TAG;
-            final FragmentSandbox foundFragment = (FragmentSandbox) fm.findFragmentByTag(tag);
+        }else if (Setting.SETTINGS_URI.equals(uri)) {
+            tag = Setting.TAG;
+            final Setting foundFragment = (Setting) fm.findFragmentByTag(tag);
             if (foundFragment != null) {
                 foundFragment.setOnSettingsChangedListener(mSettingsChangedListener);
                 fragment = foundFragment;
             } else {
-                final FragmentSandbox settingsFragment = new FragmentSandbox();
+                final Setting settingsFragment = new Setting();
                 settingsFragment.setOnSettingsChangedListener(mSettingsChangedListener);
                 fragment = settingsFragment;
             }
         }else if (uri != null) {
             //如果为网页...
-            tag = FragmentWebView.TAG;
-            final FragmentWebView webViewFragment;
+            tag = Web.TAG;
+            final Web webViewFragment;
             final Fragment foundFragment = fm.findFragmentByTag(tag);
             if (foundFragment != null) {
                 fragment = foundFragment;
-                webViewFragment = (FragmentWebView) fragment;
+                webViewFragment = (Web) fragment;
             } else {
-                webViewFragment = new FragmentWebView();
+                webViewFragment = new Web();
                 fragment = webViewFragment;
             }
             webViewFragment.setUrl(uri.toString());
@@ -198,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
         tr.commit();
 
         //从主页切换到其他页
-        if(!currentUri.equals(uri)&&currentUri.equals(FragmentHome.HOME_URI))
+        if(!currentUri.equals(uri)&&currentUri.equals(Home.HOME_URI))
             swapMenu(false);
 
         currentUri = uri;
@@ -206,14 +210,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private class SettingsChangedListener implements FragmentSandbox.OnSettingsChangedListener {
+    private class SettingsChangedListener implements Setting.OnSettingsChangedListener {
         private final float mDensity = getResources().getDisplayMetrics().density;
         private final int mAdditionaSpacingWidth = (int) (100 * mDensity);
 
         @Override
         public void onSettingChanged(int prefId, int value) {
             switch (prefId) {
-                case FragmentSandbox.PREF_SPACING_TYPE:
+                case Setting.PREF_SPACING_TYPE:
                     final int currentType = viewActionsContentView.getSpacingType();
                     if (currentType == value)
                         return;
@@ -225,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     viewActionsContentView.setSpacingType(value);
                     return;
-                case FragmentSandbox.PREF_SPACING_WIDTH:
+                case Setting.PREF_SPACING_WIDTH:
                     final int width;
                     if (viewActionsContentView.getSpacingType() == ActionsContentView.SPACING_ACTIONS_WIDTH)
                         width = (int) (value * mDensity) + mAdditionaSpacingWidth;
@@ -233,27 +237,27 @@ public class MainActivity extends AppCompatActivity {
                         width = (int) (value * mDensity);
                     viewActionsContentView.setSpacingWidth(width);
                     return;
-                case FragmentSandbox.PREF_SPACING_ACTIONS_WIDTH:
+                case Setting.PREF_SPACING_ACTIONS_WIDTH:
                     viewActionsContentView.setActionsSpacingWidth((int) (value * mDensity));
                     return;
-                case FragmentSandbox.PREF_SHOW_SHADOW:
+                case Setting.PREF_SHOW_SHADOW:
                     viewActionsContentView.setShadowVisible(value == 1);
                     return;
                 //阴影方式
-                case FragmentSandbox.PREF_FADE_TYPE:
+                case Setting.PREF_FADE_TYPE:
                     viewActionsContentView.setFadeType(value);
                     return;
-                case FragmentSandbox.PREF_FADE_MAX_VALUE:
+                case Setting.PREF_FADE_MAX_VALUE:
                     viewActionsContentView.setFadeValue(value);
                     return;
                 //滑动方式
-                case FragmentSandbox.PREF_SWIPING_TYPE:
+                case Setting.PREF_SWIPING_TYPE:
                     viewActionsContentView.setSwipingType(value);
                     return;
-                case FragmentSandbox.PREF_SWIPING_EDGE_WIDTH:
+                case Setting.PREF_SWIPING_EDGE_WIDTH:
                     viewActionsContentView.setSwipingEdgeWidth(value);
                     return;
-                case FragmentSandbox.PREF_FLING_DURATION:
+                case Setting.PREF_FLING_DURATION:
                     viewActionsContentView.setFlingDuration(value);
                     return;
                 default:

@@ -99,6 +99,7 @@ public class StickyListHeadersListView extends FrameLayout {
     /* --- 触摸处理 --- */
     private float mDownY;
     private boolean mHeaderOwnsTouch;
+    //滑动距离
     private float mTouchSlop;
 
     /* --- 其他 --- */
@@ -120,9 +121,11 @@ public class StickyListHeadersListView extends FrameLayout {
     public StickyListHeadersListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
+        // getScaledTouchSlop是一个距离，表示滑动的时候，手的移动要大于这个距离才开始移动控件。
+        // 如果小于这个距离就不触发移动控件，如viewpager就是用这个距离来判断用户是否翻页
         mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
 
-        // Initialize the wrapped list
+        // 初始化封装的列表视图
         mList = new WrapperViewList(context);
 
         // null out divider, dividers are handled by adapter so they look good with headers

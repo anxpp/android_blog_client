@@ -1,4 +1,4 @@
-package com.anxpp.blog;
+package com.anxpp.blog.fragment;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,11 +9,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.anxpp.blog.R;
 import com.anxpp.blog.adapter.InitialAdapter;
 import com.anxpp.blog.stickylistheaders.StickyListHeadersListView;
 
-public class FragmentHome extends Fragment implements AdapterView.OnItemClickListener{
-	public static final String TAG = FragmentHome.class.getSimpleName();
+public class Home extends Fragment implements AdapterView.OnItemClickListener{
+	public static final String TAG = Home.class.getSimpleName();
 
 	private static final String HOME_SCHEME = "settings";
 	private static final String HOME_AUTHORITY = "home";

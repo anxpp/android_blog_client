@@ -25,7 +25,7 @@ import com.anxpp.blog.stickylistheaders.StickyListHeadersListView;
 /**
  * @author Emil Sjlander
  */
-public class TestActivity extends ActionBarActivity implements
+public class InitialActivity extends ActionBarActivity implements
         AdapterView.OnItemClickListener,
         StickyListHeadersListView.OnHeaderClickListener,
         StickyListHeadersListView.OnStickyHeaderOffsetChangedListener,
@@ -170,7 +170,7 @@ public class TestActivity extends ActionBarActivity implements
                     mAdapter.clear();
                     break;
                 case R.id.open_expandable_list_button:
-                    Intent intent = new Intent(TestActivity.this,ExpandableListTestActivity.class);
+                    Intent intent = new Intent(InitialActivity.this,ExpandableListTestActivity.class);
                     startActivity(intent);
                     break;
             }
