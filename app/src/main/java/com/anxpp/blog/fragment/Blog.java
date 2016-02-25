@@ -91,7 +91,9 @@ public class Blog extends Fragment {
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
 				if (event.getAction() == KeyEvent.ACTION_DOWN) {
-					if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) { //表示按返回键 时的操作
+					//表示按返回键时的操作
+					if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
+						showRefreshLayout();
 						webView.goBack(); //后退
 						return true; //已处理
 					}
