@@ -12,7 +12,7 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 
 /**
- * ��װ��list��ͼ
+ * 封装的list视图
  */
 class WrapperViewList extends ListView {
 
@@ -31,7 +31,7 @@ class WrapperViewList extends ListView {
 	public WrapperViewList(Context context) {
 		super(context);
 
-		// Use reflection to be able to change the size/position of the list
+		// 用反射来改变列表的大小/位置
 		// selector so it does not come under/over the header
 		try {
 			Field selectorRectField = AbsListView.class.getDeclaredField("mSelectorRect");
@@ -47,6 +47,7 @@ class WrapperViewList extends ListView {
 		}
 	}
 
+	//执行点击
 	@Override
 	public boolean performItemClick(View view, int position, long id) {
 		if (view instanceof WrapperView) {

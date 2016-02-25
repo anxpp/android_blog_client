@@ -14,29 +14,29 @@ import com.anxpp.blog.stickylistheaders.StickyListHeadersAdapter;
 import java.util.ArrayList;
 
 /**
- * Ê××ÖÄ¸·ÖÀàÊÊÅäÆ÷
+ * é¦–å­—æ¯åˆ†ç±»é€‚é…å™¨
  */
 public class InitialAdapter extends BaseAdapter implements StickyListHeadersAdapter, SectionIndexer {
 
-    //ÉÏÏÂÎÄ
+    //ä¸Šä¸‹æ–‡
     private final Context mContext;
-    //ÁĞ±íÒªÌî³äµÄÄÚÈİ
+    //åˆ—è¡¨è¦å¡«å……çš„å†…å®¹
     private String[] mCountries;
-    //±ê¼Ç£¬´Ë´¦ÎªËùÓĞ²»Í¬µÄÊ××ÖÄ¸µÚÒ»´Î³öÏÖµÄÎ»ÖÃ
+    //æ ‡è®°ï¼Œæ­¤å¤„ä¸ºæ‰€æœ‰ä¸åŒçš„é¦–å­—æ¯ç¬¬ä¸€æ¬¡å‡ºç°çš„ä½ç½®
     private int[] mSectionIndices;
-    //Ö¤Êé ËùÓĞÊ××ÖÄ¸
+    //è¯ä¹¦ æ‰€æœ‰é¦–å­—æ¯
     private Character[] mSectionLetters;
     /**
-     * ×÷ÓÃÀàËÆÓÚfindViewById()¡£
-     * ²»Í¬µãÊÇLayoutInflaterÊÇÓÃÀ´ÕÒres/layout/ÏÂµÄxml²¼¾ÖÎÄ¼ş£¬²¢ÇÒÊµÀı»¯
-     * ¶øfindViewById()ÊÇÕÒxml²¼¾ÖÎÄ¼şÏÂµÄ¾ßÌåwidget¿Ø¼ş(ÈçButton¡¢TextViewµÈ)¡£
-     * ¾ßÌå×÷ÓÃ£º
-     * 1¡¢¶ÔÓÚÒ»¸öÃ»ÓĞ±»ÔØÈë»òÕßÏëÒª¶¯Ì¬ÔØÈëµÄ½çÃæ£¬¶¼ĞèÒªÊ¹ÓÃLayoutInflater.inflate()À´ÔØÈë£»
-     * 2¡¢¶ÔÓÚÒ»¸öÒÑ¾­ÔØÈëµÄ½çÃæ£¬¾Í¿ÉÒÔÊ¹ÓÃActivity.findViewById()·½·¨À´»ñµÃÆäÖĞµÄ½çÃæÔªËØ¡£
-     * LayoutInflater ÊÇÒ»¸ö³éÏóÀà£¬ÔÚÎÄµµÖĞÈçÏÂÉùÃ÷£º
+     * ä½œç”¨ç±»ä¼¼äºfindViewById()ã€‚
+     * ä¸åŒç‚¹æ˜¯LayoutInflateræ˜¯ç”¨æ¥æ‰¾res/layout/ä¸‹çš„xmlå¸ƒå±€æ–‡ä»¶ï¼Œå¹¶ä¸”å®ä¾‹åŒ–
+     * è€ŒfindViewById()æ˜¯æ‰¾xmlå¸ƒå±€æ–‡ä»¶ä¸‹çš„å…·ä½“widgetæ§ä»¶(å¦‚Buttonã€TextViewç­‰)ã€‚
+     * å…·ä½“ä½œç”¨ï¼š
+     * 1ã€å¯¹äºä¸€ä¸ªæ²¡æœ‰è¢«è½½å…¥æˆ–è€…æƒ³è¦åŠ¨æ€è½½å…¥çš„ç•Œé¢ï¼Œéƒ½éœ€è¦ä½¿ç”¨LayoutInflater.inflate()æ¥è½½å…¥ï¼›
+     * 2ã€å¯¹äºä¸€ä¸ªå·²ç»è½½å…¥çš„ç•Œé¢ï¼Œå°±å¯ä»¥ä½¿ç”¨Activity.findViewById()æ–¹æ³•æ¥è·å¾—å…¶ä¸­çš„ç•Œé¢å…ƒç´ ã€‚
+     * LayoutInflater æ˜¯ä¸€ä¸ªæŠ½è±¡ç±»ï¼Œåœ¨æ–‡æ¡£ä¸­å¦‚ä¸‹å£°æ˜ï¼š
      * public abstract class LayoutInflater extends Object
-     * »ñµÃ LayoutInflater ÊµÀıµÄÈıÖÖ·½Ê½
-     * 1. LayoutInflater inflater = getLayoutInflater();//µ÷ÓÃActivityµÄgetLayoutInflater()
+     * è·å¾— LayoutInflater å®ä¾‹çš„ä¸‰ç§æ–¹å¼
+     * 1. LayoutInflater inflater = getLayoutInflater();//è°ƒç”¨Activityçš„getLayoutInflater()
      * 2. LayoutInflater inflater = LayoutInflater.from(context);
      * 3. LayoutInflater inflater =  (LayoutInflater)context.getSystemService
      * (Context.LAYOUT_INFLATER_SERVICE);
@@ -51,10 +51,10 @@ public class InitialAdapter extends BaseAdapter implements StickyListHeadersAdap
         mSectionLetters = getSectionLetters();
     }
 
-    //Ã¿¸öÊ××ÖÄ¸³öÏÖµÄÎ»ÖÃ
+    //æ¯ä¸ªé¦–å­—æ¯å‡ºç°çš„ä½ç½®
     private int[] getSectionIndices() {
         ArrayList<Integer> sectionIndices = new ArrayList<>();
-        //»ñÈ¡Ê××ÖÄ¸
+        //è·å–é¦–å­—æ¯
         char lastFirstChar = mCountries[0].charAt(0);
         sectionIndices.add(0);
         for (int i = 1; i < mCountries.length; i++) {
@@ -70,7 +70,7 @@ public class InitialAdapter extends BaseAdapter implements StickyListHeadersAdap
         return sections;
     }
 
-    //»ñÈ¡ËùÓĞÊ××ÖÄ¸
+    //è·å–æ‰€æœ‰é¦–å­—æ¯
     private Character[] getSectionLetters() {
         Character[] letters = new Character[mSectionIndices.length];
         for (int i = 0; i < mSectionIndices.length; i++) {
@@ -95,7 +95,7 @@ public class InitialAdapter extends BaseAdapter implements StickyListHeadersAdap
     }
 
     /**
-     * ÊÇÅäÖÃ
+     * æ˜¯é…ç½®
      * @param position 1
      * @param convertView 1
      * @param parent 1
@@ -103,7 +103,7 @@ public class InitialAdapter extends BaseAdapter implements StickyListHeadersAdap
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //ViewHolderÍ¨³£³öÏÖÔÚÊÊÅäÆ÷Àï£¬ÎªµÄÊÇlistview¹ö¶¯µÄÊ±ºò¿ìËÙÉèÖÃÖµ£¬¶ø²»±ØÃ¿´Î¶¼ÖØĞÂ´´½¨ºÜ¶à¶ÔÏó£¬´Ó¶øÌáÉıĞÔÄÜ
+        //ViewHolderé€šå¸¸å‡ºç°åœ¨é€‚é…å™¨é‡Œï¼Œä¸ºçš„æ˜¯listviewæ»šåŠ¨çš„æ—¶å€™å¿«é€Ÿè®¾ç½®å€¼ï¼Œè€Œä¸å¿…æ¯æ¬¡éƒ½é‡æ–°åˆ›å»ºå¾ˆå¤šå¯¹è±¡ï¼Œä»è€Œæå‡æ€§èƒ½
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
@@ -113,7 +113,7 @@ public class InitialAdapter extends BaseAdapter implements StickyListHeadersAdap
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        //ÉèÖÃÖµ
+        //è®¾ç½®å€¼
         holder.text.setText(mCountries[position]);
         return convertView;
     }
@@ -178,7 +178,7 @@ public class InitialAdapter extends BaseAdapter implements StickyListHeadersAdap
         return mSectionLetters;
     }
 
-    //ÇåÀí
+    //æ¸…ç†
     public void clear() {
         mCountries = new String[0];
         mSectionIndices = new int[0];
